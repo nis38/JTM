@@ -37,7 +37,7 @@ library(performance) # nice for checking model asummptions
 library(ggsignif) # For sig box plots
 library(ecospat) # Boyce Index
 
-moth <- read.csv("moth_final.csv")
+moth <- read.csv("moth_final.csv") ## from figshare
 
 
 
@@ -45,7 +45,7 @@ moth <- read.csv("moth_final.csv")
 ## Build map with only nations of interest
 data("wrld_simpl") #Get border data from rgeos
 myn <- c("United Kingdom", "France", "Germany", "Austria", "Germany", "Denmark",
-         "Ireland", "Switzerland", "Belgium", "Netherlands", "Luxembourg", "Czech Republic")
+         "Ireland", "Switzerland", "Belgium", "Netherlands", "Luxembourg", "Czech Republic") ## add or remove "Italy" for sensitivity analyses
 my_map <- wrld_simpl[wrld_simpl$NAME %in% myn,]
 plot(my_map, axes=T)
 
@@ -53,7 +53,7 @@ plot(my_map, axes=T)
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 myn2 <- c("United Kingdom", "France", "Germany", "Austria", "Germany", "Denmark",
-          "Ireland", "Switzerland", "Belgium", "Netherlands", "Luxembourg", "Czech Rep.")
+          "Ireland", "Switzerland", "Belgium", "Netherlands", "Luxembourg", "Czech Rep.") ## add or remove "Italy" for sensitivity analyses
 my_mapg <- world[world$brk_name %in% myn2,]
 
 # And only keep points that are within my_map
@@ -120,6 +120,8 @@ points(moth$Long[moth$source=="GBIF"],
 
 
 #### 00s (Baseline Model) ####
+
+## Climate data edited from worldclim
 prec00s <- raster("Climate/00s/prec00s.tif")
 covprec0 <- raster("Climate/00s/covprec00s.tif")
 tmax00s <- raster("Climate/00s/tmax00s.tif")
